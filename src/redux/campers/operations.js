@@ -1,10 +1,10 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getCampers } from "../../api/campersApi";
-import { buildQueryParams } from "../../utils/buildQueryParams";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getCampers } from '../../api/campersApi';
+import { buildQueryParams } from '../../utils/buildQueryParams';
 
 export const fetchCampers = createAsyncThunk(
-  "campers/fetchAll",
-  async ({ page = 1, limit = 4, filters = {} }, thunkAPI) => {
+  'campers/fetchAll',
+  async ({ page = 1, limit = 4, filters = {} } = {}, thunkAPI) => {
     try {
       const params = buildQueryParams({
         page,
@@ -16,5 +16,5 @@ export const fetchCampers = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
+  }
 );

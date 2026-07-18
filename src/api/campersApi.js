@@ -1,16 +1,13 @@
-import { axiosInstance } from "./axiosInstance";
-import { mapCamper } from "./mapper";
+import { axiosInstance } from './axiosInstance';
+import { mapCamper } from './mapper';
 
-export const getCampers = async (params) => {
-  const { data } = await axiosInstance.get("/campers", {
+export const getCampers = async params => {
+  const { data } = await axiosInstance.get('/campers', {
     params,
   });
 
-  return data.map(mapCamper);
-};
-
-export const getCamperById = async (id) => {
-  const { data } = await axiosInstance.get(`/campers/${id}`);
-
-  return mapCamper(data);
+  return {
+    ...data,
+    items: data.items.map(mapCamper),
+  };
 };

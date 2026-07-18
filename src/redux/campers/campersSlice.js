@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchCampers } from './operations';
 
 const initialState = {
   items: [],
@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const campersSlice = createSlice({
-  name: "campers",
+  name: 'campers',
   initialState,
   reducers: {
     resetCampers(state) {
@@ -28,9 +28,9 @@ const campersSlice = createSlice({
     },
   },
 
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
-      .addCase(fetchCampers.pending, (state) => {
+      .addCase(fetchCampers.pending, state => {
         state.loading = true;
         state.error = null;
       })
@@ -39,12 +39,12 @@ const campersSlice = createSlice({
         state.loading = false;
 
         if (state.page === 1) {
-          state.items = action.payload;
+          state.items = action.payload.items;
         } else {
-          state.items.push(...action.payload);
+          state.items.push(...action.payload.items);
         }
 
-        state.hasMore = action.payload.length === state.limit;
+        state.hasMore = action.payload.items.length === state.limit;
       })
 
       .addCase(fetchCampers.rejected, (state, action) => {

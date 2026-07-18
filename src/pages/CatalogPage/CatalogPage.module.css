@@ -2,6 +2,8 @@
   display: flex;
   gap: 64px;
   align-items: flex-start;
+
+  padding: 48px 64px;
 }
 
 .content {
