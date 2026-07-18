@@ -38,13 +38,11 @@ const CatalogPage = () => {
   console.log(campers);
 
   const handleLoadMore = () => {
-    const next = page + 1;
-
     dispatch(nextPage());
 
     dispatch(
       fetchCampers({
-        page: next,
+        page: page + 1,
         limit: 4,
       })
     );
@@ -66,7 +64,7 @@ const CatalogPage = () => {
             {hasMore && (
               <LoadMore
                 onClick={() => {
-                  handleLoadMore;
+                  handleLoadMore();
                 }}
               />
             )}

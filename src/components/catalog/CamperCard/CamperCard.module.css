@@ -7,6 +7,7 @@
   background-color: var(--color-background-card);
 
   border: none;
+  border: 1px solid var(--color-background-card);
   border-radius: 20px;
 }
 
@@ -33,18 +34,19 @@
 }
 
 .content {
-  flex: 1;
-  min-width: 0;
-
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  flex: 1;
+  min-width: 0;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
 }
 
 .header h2,
@@ -68,8 +70,6 @@
 }
 
 .description {
-  margin: 24px 0;
-
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
