@@ -2,7 +2,7 @@
   display: flex;
   gap: 64px;
   align-items: flex-start;
-
+  background-color: var(--color-bg);
   padding: 48px 64px;
 }
 

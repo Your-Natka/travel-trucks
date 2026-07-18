@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Button from "../../shared/Button/Button";
-import styles from "./Hero.module.css";
+import { Link } from 'react-router-dom';
+import Button from '../../shared/Button/Button';
+import styles from './Hero.module.css';
 
 const Hero = () => {
   return (
@@ -13,7 +13,7 @@ const Hero = () => {
         </p>
 
         <Link to="/catalog">
-          <Button>View Now</Button>
+          <Button variant="primary">View Now</Button>
         </Link>
       </div>
     </section>

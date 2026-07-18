@@ -1,5 +1,6 @@
 import sprites from '../../../assets/icons/sprites.svg';
 import Button from '../../shared/Button/Button';
+import { capitalize } from '../../../utils/text';
 import css from './CamperCard.module.css';
 
 const CamperCard = ({ camper }) => {
@@ -14,56 +15,61 @@ const CamperCard = ({ camper }) => {
       </div>
 
       <div className={css.content}>
-        <div className={css.header}>
-          <h2>{camper.name}</h2>
-          <div className={css.price}>
-            <p>€{camper.price}</p>
-            {/* HeartButton */}
+        <div className={css.top}>
+          <div className={css.header}>
+            <h2>{camper.name}</h2>
+            <div className={css.price}>
+              <p>€{camper.price}</p>
+              {/* HeartButton */}
+            </div>
           </div>
-        </div>
-        <div className={css.meta}>
-          <div className={css.rating}>
-            <svg width="20" height="20">
-              <use href={`${sprites}#icon-star-rating`} />
-            </svg>
-            <span>
-              {camper.rating} ({camper.reviews.length} Reviews)
-            </span>
-          </div>
-          {/* Rating */}
-          <div className={css.location}>
-            <svg width="20" height="20">
-              <use href={`${sprites}#icon-map`} />
-            </svg>
-            <p>{camper.location}</p>
+
+          <div className={css.meta}>
+            <div className={css.rating}>
+              <svg width="16" height="16">
+                <use href={`${sprites}#icon-star-rating`} />
+              </svg>
+              <span>
+                {camper.rating} ({camper.reviews.length} Reviews)
+              </span>
+            </div>
+            {/* Rating */}
+            <div className={css.location}>
+              <svg width="16" height="16">
+                <use href={`${sprites}#icon-map`} />
+              </svg>
+              <p>{camper.location}</p>
+            </div>
           </div>
         </div>
 
-        <p>{camper.description}</p>
+        <p className={css.description}>{camper.description}</p>
         <div className={css.features}>
           <div className={css.feature}>
             <svg width="20" height="20">
               <use href={`${sprites}#icon-zapravka`} />
             </svg>
 
-            <span>{camper.engine}</span>
+            <span>{capitalize(camper.engine)}</span>
           </div>
           <div className={css.feature}>
             <svg width="20" height="20">
               <use href={`${sprites}#icon-automat`} />
             </svg>
 
-            <span>{camper.transmission}</span>
+            <span>{capitalize(camper.transmission)}</span>
           </div>
           <div className={css.feature}>
             <svg width="20" height="20">
               <use href={`${sprites}#icon-car`} />
             </svg>
 
-            <span>{camper.form}</span>
+            <span>{capitalize(camper.form)}</span>
           </div>
         </div>
-        <Button>Show more</Button>
+        <div className={css.button}>
+          <Button variant="primary">Show more</Button>
+        </div>
       </div>
     </article>
   );
