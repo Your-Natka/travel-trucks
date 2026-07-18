@@ -1,0 +1,43 @@
+.navigation {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.list {
+  display: flex;
+  gap: 32px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #101828;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #829b91;
+}
+
+.link,
+.active {
+  text-decoration: none;
+  font-family: "Inter", sans-serif;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  color: #101828;
+
+  transition: color 0.2s;
+}
+
+.active {
+  color: #829b91;
+}

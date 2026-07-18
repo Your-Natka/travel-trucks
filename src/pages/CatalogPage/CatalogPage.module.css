@@ -1,0 +1,9 @@
+.catalog {
+  display: flex;
+  gap: 64px;
+  align-items: flex-start;
+}
+
+.content {
+  flex: 1;
+}

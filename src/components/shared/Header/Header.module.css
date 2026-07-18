@@ -1,0 +1,16 @@
+.header {
+  height: 72px;
+  border-bottom: 1px solid #f2f4f7;
+  background: #ffffff;
+}
+
+.container {
+  position: relative;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 64px;
+
+  display: flex;
+  align-items: center;
+}
