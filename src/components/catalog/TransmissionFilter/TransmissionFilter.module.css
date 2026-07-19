@@ -1,12 +1,11 @@
 .section {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
+  gap: 8px;
 }
 
 .option {
@@ -18,9 +17,46 @@
 
   font-size: 16px;
   line-height: 24px;
+  color: var(--color-main);
 }
 
-.option input {
-  width: 24px;
-  height: 24px;
+.radio {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 20px;
+  height: 20px;
+
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  cursor: pointer;
+
+  transition: border-color 200ms ease;
+}
+
+.radio::before {
+  content: '';
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: var(--color-main);
+
+  transform: scale(0);
+
+  transition: transform 200ms ease;
+}
+
+.radio:checked {
+  border-color: var(--color-main);
+}
+
+.radio:checked::before {
+  transform: scale(1);
 }

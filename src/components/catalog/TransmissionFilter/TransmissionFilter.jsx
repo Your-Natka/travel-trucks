@@ -1,17 +1,34 @@
+import { useDispatch, useSelector } from 'react-redux';
+
 import SectionTitle from '../../shared/SectionTitle/SectionTitle';
+
+import { selectTransmission } from '../../../redux/filters/selectors';
+
+import { setTransmission } from '../../../redux/filters/filtersSlice';
+
 import css from './TransmissionFilter.module.css';
 
 const options = ['Automatic', 'Manual'];
 
 const TransmissionFilter = () => {
+  const dispatch = useDispatch();
+
+  const transmission = useSelector(selectTransmission);
+
   return (
     <section className={css.section}>
-      <SectionTitle>Camper form</SectionTitle>
+      <SectionTitle>Transmission</SectionTitle>
 
       <div className={css.list}>
         {options.map(option => (
           <label key={option} className={css.option}>
-            <input type="radio" name="form" value={option} />
+            <input
+              className={css.radio}
+              type="radio"
+              name="transmission"
+              checked={transmission === option}
+              onChange={() => dispatch(setTransmission(option))}
+            />
 
             <span>{option}</span>
           </label>

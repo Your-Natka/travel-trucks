@@ -5,20 +5,11 @@ const initialState = {
   form: '',
   engine: '',
   transmission: '',
-
-  AC: false,
-  kitchen: false,
-  bathroom: false,
-  TV: false,
-  radio: false,
-  refrigerator: false,
-  microwave: false,
-  gas: false,
-  water: false,
 };
 
 const filtersSlice = createSlice({
   name: 'filters',
+
   initialState,
 
   reducers: {
@@ -52,4 +43,4 @@ export const {
   clearFilters,
 } = filtersSlice.actions;
 
-export const filtersReducer = filtersSlice.reducer;
+export default filtersSlice.reducer;
