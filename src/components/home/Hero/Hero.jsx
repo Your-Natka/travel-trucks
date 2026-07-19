@@ -16,7 +16,9 @@ const Hero = () => {
             </p>
 
             <Link to="/catalog">
-              <Button variant="primary">View Now</Button>
+              <Button variant="primary" size="hero">
+                View Now
+              </Button>
             </Link>
           </div>
         </Container>

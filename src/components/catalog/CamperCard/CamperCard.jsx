@@ -40,12 +40,10 @@ const CamperCard = ({ camper }) => {
 
         <FeatureList camper={camper} />
 
-        <Link
-          to={`/catalog/${camper.id}`}
-          target="_blank"
-          className={css.button}
-        >
-          <Button variant="primary">Show more</Button>
+        <Link to={`/catalog/${camper.id}`} target="_blank">
+          <Button variant="primary" size="hero">
+            Show more
+          </Button>
         </Link>
       </div>
     </article>

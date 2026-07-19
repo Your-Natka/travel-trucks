@@ -1,10 +1,10 @@
-import Button from '../shared/Button/Button';
+import Button from '../../shared/Button/Button';
 import css from './LoadMore.module.css';
 
 const LoadMore = ({ onClick }) => {
   return (
-    <div className={css.wrapper}>
-      <Button variant="secondary" onClick={onClick}>
+    <div className={css.botton}>
+      <Button variant="secondary" size="card" onClick={onClick}>
         Load more
       </Button>
     </div>

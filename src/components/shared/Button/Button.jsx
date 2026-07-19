@@ -1,15 +1,10 @@
-import styles from './Button.module.css';
+import clsx from 'clsx';
+import css from './Button.module.css';
 
-const Button = ({
-  children,
-  type = 'button',
-  variant = 'primary',
-  ...props
-}) => {
+const Button = ({ children, variant = 'primary', size, ...props }) => {
   return (
     <button
-      type={type}
-      className={`${styles.button} ${styles[variant]}`}
+      className={clsx(css.button, css[variant], size && css[size])}
       {...props}
     >
       {children}

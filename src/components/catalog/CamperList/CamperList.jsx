@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 
-import { selectCampers } from '../../redux/campers/selectors';
+import { selectCampers } from '../../../redux/campers/selectors';
 
-import CamperCard from '../catalog/CamperCard/CamperCard';
+import CamperCard from '../../catalog/CamperCard/CamperCard';
 
 import css from './CamperList.module.css';
 

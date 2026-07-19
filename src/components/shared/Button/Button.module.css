@@ -1,16 +1,14 @@
 .button {
-  width: 173px;
   height: 56px;
 
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
+  padding: 0 16px;
+
   border: none;
   border-radius: 200px;
-
-  background-color: var(--color-button);
-  color: var(--color-bg);
 
   cursor: pointer;
 
@@ -37,7 +35,6 @@
 }
 
 .secondary {
-  width: 145px;
   height: 56px;
 
   background-color: var(--color-bg);
@@ -56,4 +53,16 @@
 .button:hover,
 .button:focus {
   background-color: var(--color-button-hover);
+}
+
+.hero {
+  width: 173px;
+}
+
+.card {
+  width: 145px;
+}
+
+.full {
+  width: 312px;
 }

@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Container from '../../components/shared/Container/Container';
-import Filters from '../../components/Filters/Filters';
-import CamperList from '../../components/CamperList/CamperList';
-import LoadMore from '../../components/LoadMore/LoadMore';
+import Filters from '../../components/catalog/Filters/Filters';
+import CamperList from '../../components/catalog/CamperList/CamperList';
+import LoadMore from '../../components/catalog/LoadMore/LoadMore';
 import Loader from '../../components/shared/Loader/Loader';
 
 import { fetchCampers } from '../../redux/campers/operations';
