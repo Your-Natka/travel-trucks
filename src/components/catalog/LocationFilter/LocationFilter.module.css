@@ -26,17 +26,18 @@
   border: none;
   border-radius: 12px;
 
-  background: var(--color-input);
+  background: var(--color-bg);
 
   font-size: 16px;
-  color: var(--color-main);
+  color: var(--color-gray);
 }
 
 .input::placeholder {
-  color: var(--color-text);
+  color: var(--color-gray);
 }
 
 .input:focus {
-  outline: 2px solid var(--color-main);
+  outline: 2px solid var(--color-bg);
   outline-offset: 2px;
+  color: var(--color-main);
 }

@@ -5,10 +5,16 @@ import TransmissionFilter from '../TransmissionFilter/TransmissionFilter';
 
 import SectionTitle from '../../shared/SectionTitle/SectionTitle';
 import Button from '../../shared/Button/Button';
-
+import { resetCampers } from '../../../redux/campers/campersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLocation, clearFilters } from '../../../redux/filters/filtersSlice';
-import { selectLocation } from '../../../redux/filters/selectors';
+import {
+  selectLocation,
+  selectForm,
+  selectEngine,
+  selectTransmission,
+} from '../../../redux/filters/selectors';
+import { fetchCampers } from '../../../redux/campers/operations';
 
 import css from './Filters.module.css';
 
@@ -16,9 +22,38 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const location = useSelector(selectLocation);
+  const form = useSelector(selectForm);
+  const engine = useSelector(selectEngine);
+  const transmission = useSelector(selectTransmission);
 
   const handleSearch = () => {
-    console.log('Search');
+    dispatch(resetCampers());
+
+    dispatch(
+      fetchCampers({
+        page: 1,
+        limit: 4,
+        filters: {
+          location,
+          form,
+          engine,
+          transmission,
+        },
+      })
+    );
+  };
+
+  const handleClear = () => {
+    dispatch(clearFilters());
+    dispatch(resetCampers());
+
+    dispatch(
+      fetchCampers({
+        page: 1,
+        limit: 4,
+        filters: {},
+      })
+    );
   };
 
   return (
@@ -41,11 +76,7 @@ const Filters = () => {
           Search
         </Button>
 
-        <Button
-          variant="secondary"
-          size="full"
-          onClick={() => dispatch(clearFilters())}
-        >
+        <Button variant="secondary" size="full" onClick={handleClear}>
           Clear filters
         </Button>
       </div>

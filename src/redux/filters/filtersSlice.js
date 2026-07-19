@@ -38,6 +38,11 @@ const filtersSlice = createSlice({
       state.transmission = action.payload;
     },
 
+    toggleEquipment(state, action) {
+      const equipment = action.payload;
+      state[equipment] = !state[equipment];
+    },
+
     clearFilters() {
       return initialState;
     },
@@ -49,6 +54,7 @@ export const {
   setForm,
   setEngine,
   setTransmission,
+  toggleEquipment,
   clearFilters,
 } = filtersSlice.actions;
 

@@ -1,6 +1,8 @@
 .hero {
   width: 100%;
-  height: calc(100vh - 72px);
+  min-height: 620px;
+  height: 75vh;
+  max-height: 700px;
 
   background-image: image-set(
     url('../../../assets/images/Picture-home-catalog1x.jpg') 1x,
@@ -10,16 +12,17 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
+  padding: 120px 0;
   display: flex;
   align-items: center;
 }
 
 .content {
-  top: 195px;
-  left: 64px;
+  max-width: 560px;
 
-  max-width: 574px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .title {
@@ -42,4 +45,8 @@
   line-height: 1.4;
 
   color: var(--color-bg);
+}
+.overlay {
+  width: 100%;
+  padding: 120px 0;
 }
