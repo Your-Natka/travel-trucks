@@ -2,18 +2,14 @@ import LocationFilter from '../LocationFilter/LocationFilter';
 import VehicleTypeFilter from '../VehicleTypeFilter/VehicleTypeFilter';
 import EngineFilter from '../EngineFilter/EngineFilter';
 import TransmissionFilter from '../TransmissionFilter/TransmissionFilter';
+import EquipmentFilter from '../EquipmentFilter/EquipmentFilter';
 
 import SectionTitle from '../../shared/SectionTitle/SectionTitle';
 import Button from '../../shared/Button/Button';
 import { resetCampers } from '../../../redux/campers/campersSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLocation, clearFilters } from '../../../redux/filters/filtersSlice';
-import {
-  selectLocation,
-  selectForm,
-  selectEngine,
-  selectTransmission,
-} from '../../../redux/filters/selectors';
+import { selectLocation } from '../../../redux/filters/selectors';
 import { fetchCampers } from '../../../redux/campers/operations';
 
 import css from './Filters.module.css';
@@ -22,9 +18,6 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const location = useSelector(selectLocation);
-  const form = useSelector(selectForm);
-  const engine = useSelector(selectEngine);
-  const transmission = useSelector(selectTransmission);
 
   const handleSearch = () => {
     dispatch(resetCampers());
@@ -33,12 +26,6 @@ const Filters = () => {
       fetchCampers({
         page: 1,
         limit: 4,
-        filters: {
-          location,
-          form,
-          engine,
-          transmission,
-        },
       })
     );
   };
@@ -68,6 +55,8 @@ const Filters = () => {
       <VehicleTypeFilter />
 
       <EngineFilter />
+
+      <EquipmentFilter />
 
       <TransmissionFilter />
 

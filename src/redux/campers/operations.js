@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getCampers } from '../../api/campersApi';
+import { getCampers, getCamperById } from '../../api/campersApi';
 import { buildQueryParams } from '../../utils/buildQueryParams';
 
 export const fetchCampers = createAsyncThunk(
@@ -13,6 +13,16 @@ export const fetchCampers = createAsyncThunk(
       });
 
       return await getCampers(params);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const fetchCamperById = createAsyncThunk(
+  'campers/fetchById',
+  async (id, thunkAPI) => {
+    try {
+      return await getCamperById(id);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

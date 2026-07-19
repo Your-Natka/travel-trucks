@@ -1,0 +1,38 @@
+.gallery {
+  width: 638px;
+}
+
+.mainImage {
+  width: 638px;
+  height: 505px;
+
+  display: block;
+
+  border-radius: 20px;
+
+  object-fit: cover;
+}
+
+.previewRow {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 24px;
+}
+
+.preview {
+  width: 136px;
+  height: 144px;
+
+  border-radius: 12px;
+
+  object-fit: cover;
+
+  cursor: pointer;
+
+  transition: transform 250ms ease;
+}
+
+.preview:hover {
+  transform: scale(1.03);
+}

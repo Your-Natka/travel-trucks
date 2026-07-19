@@ -8,7 +8,10 @@ import { setTransmission } from '../../../redux/filters/filtersSlice';
 
 import css from './TransmissionFilter.module.css';
 
-const options = ['Automatic', 'Manual'];
+const options = [
+  { label: 'Automatic', value: 'automatic' },
+  { label: 'Manual', value: 'manual' },
+];
 
 const TransmissionFilter = () => {
   const dispatch = useDispatch();
@@ -21,16 +24,16 @@ const TransmissionFilter = () => {
 
       <div className={css.list}>
         {options.map(option => (
-          <label key={option} className={css.option}>
+          <label key={option.value} className={css.option}>
             <input
               className={css.radio}
               type="radio"
               name="transmission"
-              checked={transmission === option}
-              onChange={() => dispatch(setTransmission(option))}
+              checked={transmission === option.value}
+              onChange={() => dispatch(setTransmission(option.value))}
             />
 
-            <span>{option}</span>
+            <span>{option.label}</span>
           </label>
         ))}
       </div>

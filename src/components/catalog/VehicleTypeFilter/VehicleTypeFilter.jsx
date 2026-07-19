@@ -7,7 +7,11 @@ import { setForm } from '../../../redux/filters/filtersSlice';
 
 import css from './VehicleTypeFilter.module.css';
 
-const options = ['Alcove', 'Panel Van', 'Integrated', 'Semi Integrated'];
+const options = [
+  { label: 'Alcove', value: 'alcove' },
+  { label: 'Panel Van', value: 'panelTruck' },
+  { label: 'Fully Integrated', value: 'fullyIntegrated' },
+];
 
 const VehicleTypeFilter = () => {
   const dispatch = useDispatch();
@@ -20,16 +24,16 @@ const VehicleTypeFilter = () => {
 
       <div className={css.list}>
         {options.map(option => (
-          <label key={option} className={css.option}>
+          <label key={option.value} className={css.option}>
             <input
               className={css.radio}
               type="radio"
               name="form"
-              checked={form === option}
-              onChange={() => dispatch(setForm(option))}
+              checked={form === option.value}
+              onChange={() => dispatch(setForm(option.value))}
             />
 
-            <span>{option}</span>
+            <span>{option.label}</span>
           </label>
         ))}
       </div>

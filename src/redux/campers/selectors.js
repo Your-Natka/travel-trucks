@@ -1,9 +1,11 @@
-export const selectCampers = (state) => state.campers.items;
+export const selectCampers = state => state.campers.items;
 
-export const selectLoading = (state) => state.campers.loading;
+export const selectCamper = state => state.campers.camper;
 
-export const selectError = (state) => state.campers.error;
+export const selectLoading = state => state.campers.loading;
 
-export const selectPage = (state) => state.campers.page;
+export const selectError = state => state.campers.error;
 
-export const selectHasMore = (state) => state.campers.hasMore;
+export const selectPage = state => state.campers.page;
+
+export const selectHasMore = state => state.campers.hasMore;

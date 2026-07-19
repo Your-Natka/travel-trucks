@@ -7,7 +7,7 @@ export const buildQueryParams = ({ page = 1, limit = 4, filters = {} }) => {
   Object.entries(filters).forEach(([key, value]) => {
     // пропускаємо порожні значення
     if (
-      value === "" ||
+      value === '' ||
       value === false ||
       value === null ||
       value === undefined

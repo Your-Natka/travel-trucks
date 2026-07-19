@@ -7,7 +7,10 @@ import { setEngine } from '../../../redux/filters/filtersSlice';
 
 import css from './EngineFilter.module.css';
 
-const options = ['Diesel', 'Petrol', 'Hybrid', 'Electric'];
+const options = [
+  { label: 'Diesel', value: 'diesel' },
+  { label: 'Petrol', value: 'petrol' },
+];
 
 const EngineFilter = () => {
   const dispatch = useDispatch();
@@ -20,16 +23,16 @@ const EngineFilter = () => {
 
       <div className={css.list}>
         {options.map(option => (
-          <label key={option} className={css.option}>
+          <label key={option.value} className={css.option}>
             <input
               className={css.radio}
               type="radio"
               name="engine"
-              checked={engine === option}
-              onChange={() => dispatch(setEngine(option))}
+              checked={engine === option.value}
+              onChange={() => dispatch(setEngine(option.value))}
             />
 
-            <span>{option}</span>
+            <span>{option.label}</span>
           </label>
         ))}
       </div>

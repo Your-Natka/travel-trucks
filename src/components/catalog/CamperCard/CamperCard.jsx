@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 
 import CamperImage from '../CamperImage/CamperImage';
 import FeatureList from '../FeatureList/FeatureList';
-
 import Rating from '../../shared/Rating/Rating';
 import Location from '../../shared/Location/Location';
 import Button from '../../shared/Button/Button';

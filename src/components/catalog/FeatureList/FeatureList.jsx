@@ -6,17 +6,17 @@ import css from './FeatureList.module.css';
 const FeatureList = ({ camper }) => {
   const features = [];
 
-  if (camper.transmission) {
-    features.push({
-      label: capitalize(camper.transmission),
-      icon: 'icon-automat',
-    });
-  }
-
   if (camper.engine) {
     features.push({
       label: capitalize(camper.engine),
       icon: 'icon-zapravka',
+    });
+  }
+
+  if (camper.transmission) {
+    features.push({
+      label: capitalize(camper.transmission),
+      icon: 'icon-automat',
     });
   }
 

@@ -1,19 +1,33 @@
 .badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 
+  height: 48px;
   padding: 12px 18px;
 
   background: var(--color-border);
 
   border-radius: 100px;
-  font-size: 16px;
-  font-weight: 500;
 
-  color: var(--color-main);
+  white-space: nowrap;
 }
+
 .icon {
   width: 20px;
   height: 20px;
+
+  flex-shrink: 0;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  color: var(--color-main);
 }

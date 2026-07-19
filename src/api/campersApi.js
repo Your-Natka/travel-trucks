@@ -11,3 +11,9 @@ export const getCampers = async params => {
     items: data.items.map(mapCamper),
   };
 };
+
+export const getCamperById = async id => {
+  const { data } = await axiosInstance.get(`/campers/${id}`);
+
+  return mapCamper(data);
+};

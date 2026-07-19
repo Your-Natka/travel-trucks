@@ -5,9 +5,9 @@ import css from './Badge.module.css';
 const Badge = ({ icon, label }) => {
   return (
     <div className={css.badge}>
-      <Icon name={icon} width={20} height={20} />
+      {icon && <Icon name={icon} width={20} height={20} className={css.icon} />}
 
-      <span>{label}</span>
+      <span className={css.label}>{label}</span>
     </div>
   );
 };
