@@ -19,10 +19,13 @@ const VehicleDetails = ({ camper }) => {
         </div>
       </section>
 
-      <section className={css.bottom}>
-        <Reviews reviews={camper.reviews} />
+      <section>
+        <h3 className="title">Reviews</h3>
+        <div className={css.bottom}>
+          <Reviews reviews={camper.reviews} />
 
-        <BookingForm />
+          <BookingForm />
+        </div>
       </section>
     </main>
   );
