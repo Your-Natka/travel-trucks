@@ -1,75 +1,52 @@
-import sprites from '../../../assets/icons/sprites.svg';
+import { Link } from 'react-router-dom';
+
+import CamperImage from '../CamperImage/CamperImage';
+import FeatureList from '../FeatureList/FeatureList';
+
+import Rating from '../../shared/Rating/Rating';
+import Location from '../../shared/Location/Location';
 import Button from '../../shared/Button/Button';
-import { capitalize } from '../../../utils/text';
+
 import css from './CamperCard.module.css';
 
 const CamperCard = ({ camper }) => {
   return (
     <article className={css.card}>
-      <div className={css.imageWrapper}>
-        <img
-          className={css.image}
-          src={camper.gallery[0].thumb}
-          alt={camper.name}
-        />
-      </div>
+      <CamperImage image={camper.gallery[0].thumb} name={camper.name} />
 
       <div className={css.content}>
-        <div className={css.top}>
-          <div className={css.header}>
-            <h2>{camper.name}</h2>
-            <div className={css.price}>
-              <p>€{camper.price}</p>
-              {/* HeartButton */}
-            </div>
+        <header className={css.header}>
+          <div>
+            <h2 className={css.title}>{camper.name}</h2>
           </div>
 
-          <div className={css.meta}>
-            <div className={css.rating}>
-              <svg width="16" height="16">
-                <use href={`${sprites}#icon-star-rating`} />
-              </svg>
-              <span>
-                {camper.rating} ({camper.reviews.length} Reviews)
-              </span>
-            </div>
-            {/* Rating */}
-            <div className={css.location}>
-              <svg width="16" height="16">
-                <use href={`${sprites}#icon-map`} />
-              </svg>
-              <p>{camper.location}</p>
-            </div>
+          <div className={css.priceBox}>
+            <span className={css.price}>
+              €
+              {Number(camper.price).toLocaleString('de-DE', {
+                minimumFractionDigits: 2,
+              })}
+            </span>
           </div>
+        </header>
+
+        <div className={css.info}>
+          <Rating rating={camper.rating} />
+
+          <Location location={camper.location} />
         </div>
 
         <p className={css.description}>{camper.description}</p>
-        <div className={css.features}>
-          <div className={css.feature}>
-            <svg width="20" height="20">
-              <use href={`${sprites}#icon-zapravka`} />
-            </svg>
 
-            <span>{capitalize(camper.engine)}</span>
-          </div>
-          <div className={css.feature}>
-            <svg width="20" height="20">
-              <use href={`${sprites}#icon-automat`} />
-            </svg>
+        <FeatureList camper={camper} />
 
-            <span>{capitalize(camper.transmission)}</span>
-          </div>
-          <div className={css.feature}>
-            <svg width="20" height="20">
-              <use href={`${sprites}#icon-car`} />
-            </svg>
-
-            <span>{capitalize(camper.form)}</span>
-          </div>
-        </div>
-        <div className={css.button}>
+        <Link
+          to={`/catalog/${camper.id}`}
+          target="_blank"
+          className={css.button}
+        >
           <Button variant="primary">Show more</Button>
-        </div>
+        </Link>
       </div>
     </article>
   );

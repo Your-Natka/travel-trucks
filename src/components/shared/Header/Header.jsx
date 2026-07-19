@@ -1,14 +1,15 @@
-import Logo from "../Logo/Logo";
-import Navigation from "../Navigation/Navigation";
-import styles from "./Header.module.css";
+import Container from '../Container/Container';
+import Logo from '../Logo/Logo';
+import Navigation from '../Navigation/Navigation';
+import styles from './Header.module.css';
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
+      <Container className={styles.container}>
         <Logo />
         <Navigation />
-      </div>
+      </Container>
     </header>
   );
 };

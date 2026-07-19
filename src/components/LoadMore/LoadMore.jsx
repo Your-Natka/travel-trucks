@@ -1,4 +1,4 @@
-import Button from '../../shared/Button/Button';
+import Button from '../shared/Button/Button';
 import css from './LoadMore.module.css';
 
 const LoadMore = ({ onClick }) => {

@@ -1,7 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nextPage } from '../../redux/campers/campersSlice';
+
+import Container from '../../components/shared/Container/Container';
+import Filters from '../../components/Filters/Filters';
+import CamperList from '../../components/CamperList/CamperList';
+import LoadMore from '../../components/LoadMore/LoadMore';
+import Loader from '../../components/shared/Loader/Loader';
+
 import { fetchCampers } from '../../redux/campers/operations';
+import { nextPage } from '../../redux/campers/campersSlice';
+
 import {
   selectCampers,
   selectLoading,
@@ -10,21 +18,16 @@ import {
   selectPage,
 } from '../../redux/campers/selectors';
 
-import Filters from '../../components/catalog/Filters/Filters';
-import CamperList from '../../components/catalog/CamperList/CamperList';
-import Loader from '../../components/shared/Loader/Loader';
-import LoadMore from '../../components/catalog/LoadMore/LoadMore';
-
 import css from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
 
-  const page = useSelector(selectPage);
-  const hasMore = useSelector(selectHasMore);
   const campers = useSelector(selectCampers);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  const hasMore = useSelector(selectHasMore);
+  const page = useSelector(selectPage);
 
   useEffect(() => {
     dispatch(
@@ -34,8 +37,6 @@ const CatalogPage = () => {
       })
     );
   }, [dispatch]);
-
-  console.log(campers);
 
   const handleLoadMore = () => {
     dispatch(nextPage());
@@ -49,28 +50,30 @@ const CatalogPage = () => {
   };
 
   return (
-    <main className={css.catalog}>
-      <Filters />
+    <main className={css.page}>
+      <Container>
+        <section className={css.catalog}>
+          <aside className={css.sidebar}>
+            <Filters />
+          </aside>
 
-      <section className={css.content}>
-        {loading && <Loader />}
+          <section className={css.content}>
+            {loading && <Loader />}
 
-        {error && <p>{error}</p>}
+            {error && <p>{error}</p>}
 
-        {!loading && !error && campers.length > 0 && (
-          <>
-            <CamperList />
+            {!loading && !error && (
+              <>
+                <CamperList />
 
-            {hasMore && (
-              <LoadMore
-                onClick={() => {
-                  handleLoadMore();
-                }}
-              />
+                {hasMore && campers.length > 0 && (
+                  <LoadMore onClick={handleLoadMore} />
+                )}
+              </>
             )}
-          </>
-        )}
-      </section>
+          </section>
+        </section>
+      </Container>
     </main>
   );
 };

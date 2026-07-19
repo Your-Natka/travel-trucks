@@ -1,12 +1,24 @@
 .catalog {
   display: grid;
+
   grid-template-columns: 360px 888px;
-  gap: 64px;
-  align-items: flex-start;
-  background-color: var(--color-bg);
-  padding: 48px 64px;
+
+  justify-content: space-between;
+
+  column-gap: 64px;
+}
+
+.sidebar {
+  width: 360px;
+
+  position: sticky;
+  top: 96px;
+
+  align-self: start;
 }
 
 .content {
-  flex: 1;
+  width: 888px;
+  display: flex;
+  flex-direction: column;
 }
