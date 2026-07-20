@@ -22,7 +22,7 @@
 }
 
 input {
-  background: var(-color-bg);
+  background: var(--color-bg);
 }
 
 .content {
