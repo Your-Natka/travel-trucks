@@ -10,7 +10,8 @@ import css from './VehicleTypeFilter.module.css';
 const options = [
   { label: 'Alcove', value: 'alcove' },
   { label: 'Panel Van', value: 'panelTruck' },
-  { label: 'Fully Integrated', value: 'fullyIntegrated' },
+  { label: 'Integrated', value: 'integrated' },
+  { label: 'Semi Integrated', value: 'semiIntegrated' },
 ];
 
 const VehicleTypeFilter = () => {

@@ -10,6 +10,8 @@ import css from './EngineFilter.module.css';
 const options = [
   { label: 'Diesel', value: 'diesel' },
   { label: 'Petrol', value: 'petrol' },
+  { label: 'Hybrid', value: 'hybrid' },
+  { label: 'Electric', value: 'electric' },
 ];
 
 const EngineFilter = () => {

@@ -32,6 +32,7 @@ const EquipmentFilter = () => {
           return (
             <label key={key} className={css.option}>
               <input
+                className={css.checkbox}
                 type="checkbox"
                 checked={filters[key]}
                 onChange={() => dispatch(toggleEquipment(key))}

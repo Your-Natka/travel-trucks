@@ -1,19 +1,26 @@
 .filters {
+  width: 360px;
+
   display: flex;
   flex-direction: column;
-  background: var(--color-grey);
+
+  gap: 32px;
 }
 
 .title {
+  margin: 0;
+
   font-size: 20px;
   font-weight: 600;
-  line-height: 24px;
+
   color: var(--color-main);
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
+
   gap: 16px;
-  margin-top: 40px;
+
+  margin-top: 8px;
 }

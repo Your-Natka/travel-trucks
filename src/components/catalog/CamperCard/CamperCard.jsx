@@ -5,6 +5,7 @@ import FeatureList from '../FeatureList/FeatureList';
 import Rating from '../../shared/Rating/Rating';
 import Location from '../../shared/Location/Location';
 import Button from '../../shared/Button/Button';
+import FavoriteButton from '../../shared/FavoriteButton/FavoriteButton';
 
 import css from './CamperCard.module.css';
 
@@ -26,6 +27,7 @@ const CamperCard = ({ camper }) => {
                 minimumFractionDigits: 2,
               })}
             </span>
+            <FavoriteButton camper={camper} />
           </div>
         </header>
 

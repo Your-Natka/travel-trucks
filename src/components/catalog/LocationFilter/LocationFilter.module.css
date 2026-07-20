@@ -1,5 +1,8 @@
 .section {
-  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
 }
 
 .inputWrapper {
@@ -8,20 +11,23 @@
 
 .icon {
   position: absolute;
+
   left: 20px;
   top: 50%;
+
   transform: translateY(-50%);
+
   width: 20px;
   height: 20px;
-  fill: var(--color-main);
+
+  fill: var(--color-text);
 }
 
 .input {
-  width: 100%;
+  width: 87%;
   height: 56px;
 
-  padding-left: 52px;
-  padding-right: 20px;
+  padding: 0 20px 0 48px;
 
   border: none;
   border-radius: 12px;
@@ -29,15 +35,24 @@
   background: var(--color-bg);
 
   font-size: 16px;
-  color: var(--color-gray);
+
+  color: var(--color-text);
 }
 
 .input::placeholder {
-  color: var(--color-gray);
+  color: var(--color-text);
 }
 
 .input:focus {
-  outline: 2px solid var(--color-bg);
-  outline-offset: 2px;
+  outline: 1px solid var(--color-main);
+}
+.input:hover {
+  color: var(--color-main);
+}
+.icon:hover {
+  color: var(--color-main);
+}
+
+.icon:focus {
   color: var(--color-main);
 }

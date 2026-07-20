@@ -1,44 +1,36 @@
 .section {
-  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+
+  gap: 12px;
 }
 
 .option {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   cursor: pointer;
-
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.subtitle {
-  color: var(--color-main);
 }
 
 .radio {
   appearance: none;
-  -webkit-appearance: none;
 
   width: 20px;
   height: 20px;
 
   border: 2px solid var(--color-border);
+
   border-radius: 50%;
 
   display: grid;
   place-items: center;
-
-  cursor: pointer;
-
-  transition: border-color 200ms ease;
 }
 
 .radio::before {
@@ -49,17 +41,17 @@
 
   border-radius: 50%;
 
-  background: var(--color-main);
+  background: var(--color-text);
 
   transform: scale(0);
 
-  transition: transform 200ms ease;
-}
-
-.radio:checked {
-  border-color: var(--color-main);
+  transition: 0.2s;
 }
 
 .radio:checked::before {
   transform: scale(1);
+}
+
+.radio:checked {
+  border-color: var(--color-text);
 }

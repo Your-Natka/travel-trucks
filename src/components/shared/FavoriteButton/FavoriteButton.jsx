@@ -1,33 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  addFavorite,
-  removeFavorite,
-} from '../../../redux/favorites/favoritesSlice';
+import Icon from '../Icon/Icon';
+
+import { toggleFavorite } from '../../../redux/favorites/favoritesSlice';
+
+import { selectIsFavorite } from '../../../redux/favorites/selectors';
 
 import css from './FavoriteButton.module.css';
 
-const FavoriteButton = ({ id }) => {
+const FavoriteButton = ({ camper }) => {
   const dispatch = useDispatch();
 
-  const favorites = useSelector(state => state.favorites.items);
-
-  const isFavorite = favorites.includes(id);
-
-  const toggleFavorite = () => {
-    if (isFavorite) {
-      dispatch(removeFavorite(id));
-    } else {
-      dispatch(addFavorite(id));
-    }
-  };
+  const isFavorite = useSelector(state => selectIsFavorite(state, camper.id));
 
   return (
     <button
-      className={`${css.button} ${isFavorite ? css.active : ''}`}
-      onClick={toggleFavorite}
+      type="button"
+      className={css.button}
+      onClick={() => dispatch(toggleFavorite(camper))}
     >
-      ♥
+      <Icon
+        name={isFavorite ? 'icon-heart-fill' : 'icon-heart'}
+        className={isFavorite ? css.active : css.icon}
+        width={24}
+        height={24}
+      />
     </button>
   );
 };
