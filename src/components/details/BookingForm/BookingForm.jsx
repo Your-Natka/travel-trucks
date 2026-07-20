@@ -18,7 +18,7 @@ const BookingForm = () => {
   });
 
   const onSubmit = data => {
-    console.log(data);
+    console.log('Submitted!', data);
 
     toast.success('Booking successful!');
 
@@ -36,7 +36,7 @@ const BookingForm = () => {
       <div className={css.fields}>
         <div>
           <input
-            className={css.input}
+            className={`${css.input} ${errors.name ? css.inputError : ''}`}
             type="text"
             placeholder="Name*"
             {...register('name')}
@@ -47,7 +47,7 @@ const BookingForm = () => {
 
         <div>
           <input
-            className={css.input}
+            className={`${css.input} ${errors.email ? css.inputError : ''}`}
             type="email"
             placeholder="Email*"
             {...register('email')}

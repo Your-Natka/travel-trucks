@@ -4,7 +4,7 @@
   grid-template-columns: 360px 888px;
 
   justify-content: space-between;
-
+  margin: 90px auto 80px;
   column-gap: 64px;
   padding: 24px 0px 24px;
 }

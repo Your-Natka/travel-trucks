@@ -21,6 +21,7 @@
 
 .radio {
   appearance: none;
+  -webkit-appearance: none;
 
   width: 20px;
   height: 20px;
@@ -31,6 +32,11 @@
 
   display: grid;
   place-items: center;
+  cursor: pointer;
+
+  transition:
+    border-color 250ms ease,
+    background-color 250ms ease;
 }
 
 .radio::before {
@@ -40,13 +46,21 @@
   height: 10px;
 
   border-radius: 50%;
-  margin: auto;
 
   background: var(--color-text);
 
   transform: scale(0);
 
   transition: 0.2s;
+}
+
+.radio:hover {
+  border-color: var(--color-text);
+}
+
+.radio:focus-visible {
+  outline: 2px solid var(--color-button-hover);
+  outline-offset: 2px;
 }
 
 .radio:checked::before {

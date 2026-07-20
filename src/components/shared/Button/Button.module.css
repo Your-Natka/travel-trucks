@@ -20,43 +20,55 @@
 
   transition:
     background-color 250ms ease,
-    border-color 250ms ease;
+    border-color 250ms ease,
+    color 250ms ease,
+    transform 200ms ease;
 }
+
+.button:hover {
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease,
+    transform 200ms ease;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-button-hover);
+  outline-offset: 2px;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+/* ---------- Primary ---------- */
 
 .primary {
-  background-color: var(--color-button);
+  background: var(--color-button);
   color: var(--color-bg);
-
-  border: none;
 }
 
-.primary:hover {
-  background-color: var(--color-button-hover);
+.primary:hover,
+.primary:focus-visible {
+  background: var(--color-button-hover);
 }
+
+/* ---------- Secondary ---------- */
 
 .secondary {
-  height: 56px;
-
-  background-color: var(--color-bg);
-
+  background: var(--color-bg);
   color: var(--color-main);
 
   border: 1px solid var(--color-border);
 }
 
 .secondary:hover,
-.secondary:focus {
+.secondary:focus-visible {
   border-color: var(--color-button-hover);
-  background-color: var(--color-bg);
 }
 
-.primary:hover {
-  background-color: var(--color-button-hover);
-}
-
-.primary:focus {
-  background-color: var(--color-button-hover);
-}
+/* ---------- Sizes ---------- */
 
 .hero {
   width: 173px;

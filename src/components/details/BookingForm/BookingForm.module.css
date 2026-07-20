@@ -42,7 +42,7 @@
 
   padding: 18px;
 
-  border: none;
+  border: 1px solid transparent;
   border-radius: 12px;
 
   background: var(--color-background-card);
@@ -53,22 +53,38 @@
   color: var(--color-main);
 
   outline: none;
+  transition: border-color 200ms ease;
 }
 
 .input::placeholder {
-  color: var(--color-text);
-}
-
-.textarea {
-  min-height: 118px;
-
-  resize: none;
+  color: var(--color-gray);
 }
 
 .input:focus {
-  outline: 1px solid var(--color-button);
+  border: 1px solid var(--color-button);
 }
 
 .form button {
   align-self: center;
+}
+
+.inputError {
+  border-color: 1px solid #e44848;
+}
+
+.error {
+  margin-top: 4px;
+  margin-left: 2px;
+
+  color: #e44848;
+
+  font-size: 12px;
+  line-height: 16px;
+}
+.inputError {
+  border: 1px solid #e44848;
+}
+
+.inputError:focus {
+  border-color: 1px solid #e44848;
 }

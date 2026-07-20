@@ -1,16 +1,60 @@
-# React + Vite
+# 🚐 TravelTrucks
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TravelTrucks is a React application for browsing and booking camper vans.
 
-Currently, two official plugins are available:
+The project was developed as a test assignment using React and Vite.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- Home page
+- Camper catalog
+- Camper details
+- Vehicle filters
+- Favorites
+- Load More pagination
+- Booking form with validation
+- Reviews
+- Sticky sidebar
+- Loading states
+- Empty state
+- Responsive UI (desktop)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Technologies
 
-## Expanding the ESLint configuration
+- React
+- Vite
+- Redux Toolkit
+- React Router
+- Axios
+- CSS Modules
+- React Hook Form
+- Yup
+- React Hot Toast
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Installation
+
+Repository
+
+github.com/Your-Natka/travel-trucks
+
+Install dependencies
+
+npm install
+
+Run development server
+
+npm run dev
+
+Build project
+
+npm run build
+
+Preview production build
+
+npm run preview
+
+## 🌐 Demo
+
+Vercel:
+
+https://travel-trucks-virid-nine.vercel.app
