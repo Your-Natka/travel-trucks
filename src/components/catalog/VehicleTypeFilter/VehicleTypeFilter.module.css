@@ -26,6 +26,9 @@
   width: 20px;
   height: 20px;
 
+  position: relative;
+  background: var(--color-bg);
+
   border: 2px solid var(--color-border);
 
   border-radius: 50%;
@@ -34,13 +37,13 @@
   place-items: center;
   cursor: pointer;
 
-  transition:
-    border-color 250ms ease,
-    background-color 250ms ease;
+  transition: border-color 250ms ease;
 }
 
 .radio::before {
   content: '';
+
+  position: absolute;
 
   width: 10px;
   height: 10px;
@@ -49,9 +52,12 @@
 
   background: var(--color-text);
 
-  transform: scale(0);
+  top: 50%;
+  left: 50%;
 
-  transition: 0.2s;
+  transform: translate(-50%, -50%) scale(0);
+
+  transition: transform 200ms ease;
 }
 
 .radio:hover {
@@ -63,10 +69,10 @@
   outline-offset: 2px;
 }
 
-.radio:checked::before {
-  transform: scale(1);
-}
-
 .radio:checked {
   border-color: var(--color-text);
+}
+
+.radio:checked::before {
+  transform: translate(-50%, -50%) scale(1);
 }
