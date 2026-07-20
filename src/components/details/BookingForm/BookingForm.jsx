@@ -1,41 +1,32 @@
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import toast from 'react-hot-toast';
 
 import Button from '../../shared/Button/Button';
+import { bookingSchema } from './validation';
 
 import css from './BookingForm.module.css';
 
 const BookingForm = () => {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    date: '',
-    comment: '',
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(bookingSchema),
   });
 
-  const handleChange = e => {
-    const { name, value } = e.target;
+  const onSubmit = data => {
+    console.log(data);
 
-    setForm(prev => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+    toast.success('Booking successful!');
 
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    console.log(form);
-
-    setForm({
-      name: '',
-      email: '',
-      date: '',
-      comment: '',
-    });
+    reset();
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
+    <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
       <h2 className={css.title}>Book your campervan now</h2>
 
       <p className={css.subtitle}>
@@ -43,25 +34,27 @@ const BookingForm = () => {
       </p>
 
       <div className={css.fields}>
-        <input
-          className={css.input}
-          type="text"
-          name="name"
-          placeholder="Name*"
-          value={form.name}
-          onChange={handleChange}
-          required
-        />
+        <div>
+          <input
+            className={css.input}
+            type="text"
+            placeholder="Name*"
+            {...register('name')}
+          />
 
-        <input
-          className={css.input}
-          type="email"
-          name="email"
-          placeholder="Email*"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
+          {errors.name && <p className={css.error}>{errors.name.message}</p>}
+        </div>
+
+        <div>
+          <input
+            className={css.input}
+            type="email"
+            placeholder="Email*"
+            {...register('email')}
+          />
+
+          {errors.email && <p className={css.error}>{errors.email.message}</p>}
+        </div>
       </div>
 
       <Button type="submit" variant="primary" size="details">

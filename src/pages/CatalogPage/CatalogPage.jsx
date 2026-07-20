@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Container from '../../components/shared/Container/Container';
@@ -6,47 +6,44 @@ import Filters from '../../components/catalog/Filters/Filters';
 import CamperList from '../../components/catalog/CamperList/CamperList';
 import LoadMore from '../../components/catalog/LoadMore/LoadMore';
 import Loader from '../../components/shared/Loader/Loader';
+import EmptyState from '../../components/shared/EmptyState/EmptyState';
 
 import { fetchCampers } from '../../redux/campers/operations';
-import { nextPage } from '../../redux/campers/campersSlice';
+import { clearFilters } from '../../redux/filters/filtersSlice';
 
-import {
-  selectCampers,
-  selectLoading,
-  selectError,
-  selectHasMore,
-  selectPage,
-} from '../../redux/campers/selectors';
+import { selectLoading, selectError } from '../../redux/campers/selectors';
+import { selectFilteredCampers } from '../../redux/filters/filteredSelectors';
 
 import css from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
 
-  const campers = useSelector(selectCampers);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  const hasMore = useSelector(selectHasMore);
-  const page = useSelector(selectPage);
+  const filteredCampers = useSelector(selectFilteredCampers);
+
+  const [visibleCount, setVisibleCount] = useState(4);
 
   useEffect(() => {
     dispatch(
       fetchCampers({
         page: 1,
-        limit: 4,
+        limit: 100,
       })
     );
   }, [dispatch]);
 
-  const handleLoadMore = () => {
-    dispatch(nextPage());
+  useEffect(() => {
+    setVisibleCount(prev => (filteredCampers.length < prev ? 4 : prev));
+  }, [filteredCampers.length]);
 
-    dispatch(
-      fetchCampers({
-        page: page + 1,
-        limit: 4,
-      })
-    );
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + 4);
+  };
+
+  const handleClear = () => {
+    dispatch(clearFilters());
   };
 
   return (
@@ -64,10 +61,18 @@ const CatalogPage = () => {
 
             {!loading && !error && (
               <>
-                <CamperList />
+                {filteredCampers.length === 0 ? (
+                  <EmptyState onClear={handleClear} onViewAll={handleClear} />
+                ) : (
+                  <>
+                    <CamperList
+                      campers={filteredCampers.slice(0, visibleCount)}
+                    />
 
-                {hasMore && campers.length > 0 && (
-                  <LoadMore onClick={handleLoadMore} />
+                    {visibleCount < filteredCampers.length && (
+                      <LoadMore onClick={handleLoadMore} />
+                    )}
+                  </>
                 )}
               </>
             )}

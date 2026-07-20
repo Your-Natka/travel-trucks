@@ -1,4 +1,10 @@
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 1000;
   height: 72px;
   border-bottom: 1px solid var(--color-feature);
   background: var(--color-bg);

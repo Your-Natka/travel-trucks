@@ -20,7 +20,7 @@ const FavoriteButton = ({ camper }) => {
       onClick={() => dispatch(toggleFavorite(camper))}
     >
       <Icon
-        name={isFavorite ? 'icon-heart-fill' : 'icon-heart'}
+        name={isFavorite ? 'icon-heart-red' : 'icon-heart'}
         className={isFavorite ? css.active : css.icon}
         width={24}
         height={24}

@@ -1,18 +1,7 @@
-import { useSelector } from 'react-redux';
-
-import { selectFilteredCampers } from '../../../redux/filters/filteredSelectors';
-
-import CamperCard from '../../catalog/CamperCard/CamperCard';
-
+import CamperCard from '../CamperCard/CamperCard';
 import css from './CamperList.module.css';
 
-const CamperList = () => {
-  const campers = useSelector(selectFilteredCampers);
-
-  if (!campers.length) {
-    return null;
-  }
-
+const CamperList = ({ campers }) => {
   return (
     <ul className={css.list}>
       {campers.map(camper => (

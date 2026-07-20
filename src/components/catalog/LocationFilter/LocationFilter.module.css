@@ -28,7 +28,7 @@
   height: 56px;
 
   padding: 0 20px 0 48px;
-
+  outline: none;
   border: none;
   border-radius: 12px;
 
@@ -43,9 +43,6 @@
   color: var(--color-text);
 }
 
-.input:focus {
-  outline: 1px solid var(--color-main);
-}
 .input:hover {
   color: var(--color-main);
 }
@@ -54,5 +51,7 @@
 }
 
 .icon:focus {
+  outline: none;
   color: var(--color-main);
+  box-shadow: 0 0 0 2px rgba(228, 72, 72, 0.15);
 }
