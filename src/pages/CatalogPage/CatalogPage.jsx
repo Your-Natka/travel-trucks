@@ -9,41 +9,46 @@ import Loader from '../../components/shared/Loader/Loader';
 import EmptyState from '../../components/shared/EmptyState/EmptyState';
 
 import { fetchCampers } from '../../redux/campers/operations';
-import { clearFilters } from '../../redux/filters/filtersSlice';
 
-import { selectLoading, selectError } from '../../redux/campers/selectors';
-import { selectFilteredCampers } from '../../redux/filters/filteredSelectors';
+import {
+  selectCampers,
+  selectLoading,
+  selectError,
+  selectHasMore,
+} from '../../redux/campers/selectors';
 
 import css from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
 
+  const campers = useSelector(selectCampers);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
-  const filteredCampers = useSelector(selectFilteredCampers);
+  const hasMore = useSelector(selectHasMore);
 
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     dispatch(
       fetchCampers({
         page: 1,
-        limit: 100,
+        limit: 4,
       })
     );
   }, [dispatch]);
 
-  useEffect(() => {
-    setVisibleCount(prev => (filteredCampers.length < prev ? 4 : prev));
-  }, [filteredCampers.length]);
-
   const handleLoadMore = () => {
-    setVisibleCount(prev => prev + 4);
-  };
+    const nextPage = page + 1;
 
-  const handleClear = () => {
-    dispatch(clearFilters());
+    dispatch(
+      fetchCampers({
+        page: nextPage,
+        limit: 4,
+      })
+    );
+
+    setPage(nextPage);
   };
 
   return (
@@ -59,21 +64,13 @@ const CatalogPage = () => {
 
             {error && <p>{error}</p>}
 
-            {!loading && !error && (
-              <>
-                {filteredCampers.length === 0 ? (
-                  <EmptyState onClear={handleClear} onViewAll={handleClear} />
-                ) : (
-                  <>
-                    <CamperList
-                      campers={filteredCampers.slice(0, visibleCount)}
-                    />
+            {!loading && !error && campers.length === 0 && <EmptyState />}
 
-                    {visibleCount < filteredCampers.length && (
-                      <LoadMore onClick={handleLoadMore} />
-                    )}
-                  </>
-                )}
+            {campers.length > 0 && (
+              <>
+                <CamperList campers={campers} />
+
+                {hasMore && !loading && <LoadMore onClick={handleLoadMore} />}
               </>
             )}
           </section>

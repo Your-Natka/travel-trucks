@@ -5,6 +5,9 @@ const initialState = {
   items: [],
   camper: null,
 
+  page: 1,
+  hasMore: true,
+
   loading: false,
   error: null,
 };
@@ -13,7 +16,13 @@ const campersSlice = createSlice({
   name: 'campers',
   initialState,
 
-  reducers: {},
+  reducers: {
+    resetCampers(state) {
+      state.items = [];
+      state.page = 1;
+      state.hasMore = true;
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -24,7 +33,17 @@ const campersSlice = createSlice({
 
       .addCase(fetchCampers.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload.items;
+
+        const { items, page } = action.payload;
+
+        if (page === 1) {
+          state.items = items;
+        } else {
+          state.items = [...state.items, ...items];
+        }
+
+        state.page = page;
+        state.hasMore = items.length === 4;
       })
 
       .addCase(fetchCampers.rejected, (state, action) => {
@@ -48,5 +67,7 @@ const campersSlice = createSlice({
       });
   },
 });
+
+export const { resetCampers } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;

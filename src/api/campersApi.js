@@ -8,6 +8,7 @@ export const getCampers = async params => {
 
   return {
     ...data,
+    page: params.page,
     items: data.items.map(mapCamper),
   };
 };

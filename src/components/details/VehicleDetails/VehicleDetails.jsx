@@ -10,7 +10,7 @@ const VehicleDetails = ({ camper }) => {
   return (
     <main className={css.wrapper}>
       <section className={css.top}>
-        <Gallery images={camper.gallery} />
+        <Gallery images={camper.gallery} name={camper.name} />
 
         <div className={css.right}>
           <CamperHeader camper={camper} />
@@ -19,8 +19,8 @@ const VehicleDetails = ({ camper }) => {
         </div>
       </section>
 
-      <section>
-        <h3 className="title">Reviews</h3>
+      <section className={css.reviewsSection}>
+        <h2 className="title">Reviews</h2>
         <div className={css.bottom}>
           <Reviews reviews={camper.reviews} />
 

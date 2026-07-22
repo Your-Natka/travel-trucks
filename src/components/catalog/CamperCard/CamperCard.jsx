@@ -41,7 +41,7 @@ const CamperCard = ({ camper }) => {
 
         <FeatureList camper={camper} />
 
-        <Link to={`/catalog/${camper.id}`} target="_blank">
+        <Link to={`/catalog/${camper.id}`}>
           <Button variant="primary" size="hero">
             Show more
           </Button>

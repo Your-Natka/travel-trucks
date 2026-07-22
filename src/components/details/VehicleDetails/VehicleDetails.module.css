@@ -13,6 +13,11 @@
   margin-bottom: 88px;
 }
 
+.reviewsSection {
+  display: flex;
+  flex-direction: column;
+}
+
 .right {
   width: 650px;
 

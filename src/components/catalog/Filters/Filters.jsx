@@ -9,9 +9,15 @@ import EquipmentFilter from '../EquipmentFilter/EquipmentFilter';
 import Button from '../../shared/Button/Button';
 import SectionTitle from '../../shared/SectionTitle/SectionTitle';
 import sprite from '../../../assets/icons/sprites.svg';
+
 import { clearFilters, setLocation } from '../../../redux/filters/filtersSlice';
 
-import { selectLocation } from '../../../redux/filters/selectors';
+import {
+  selectLocation,
+  selectFilters,
+} from '../../../redux/filters/selectors';
+
+import { fetchCampers } from '../../../redux/campers/operations';
 
 import css from './Filters.module.css';
 
@@ -19,9 +25,28 @@ const Filters = () => {
   const dispatch = useDispatch();
 
   const location = useSelector(selectLocation);
+  const filters = useSelector(selectFilters);
+
+  const handleSearch = () => {
+    dispatch(
+      fetchCampers({
+        page: 1,
+        limit: 4,
+        filters,
+      })
+    );
+  };
 
   const handleClear = () => {
     dispatch(clearFilters());
+
+    dispatch(
+      fetchCampers({
+        page: 1,
+        limit: 4,
+        filters: {},
+      })
+    );
   };
 
   return (
@@ -34,15 +59,12 @@ const Filters = () => {
       <SectionTitle className={css.title}>Filters</SectionTitle>
 
       <VehicleTypeFilter />
-
       <EngineFilter />
-
       <TransmissionFilter />
-
       <EquipmentFilter />
 
       <div className={css.buttons}>
-        <Button variant="primary" size="full">
+        <Button variant="primary" size="full" onClick={handleSearch}>
           Search
         </Button>
 
@@ -51,6 +73,7 @@ const Filters = () => {
             <svg className={css.icon} width="16" height="16">
               <use href={`${sprite}#icon-close`} />
             </svg>
+
             <span>Clear filters</span>
           </>
         </Button>

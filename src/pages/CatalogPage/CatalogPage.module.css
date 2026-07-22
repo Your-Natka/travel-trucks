@@ -1,6 +1,6 @@
 .catalog {
   display: grid;
-
+  position: relative;
   grid-template-columns: 360px 888px;
 
   justify-content: space-between;
