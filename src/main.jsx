@@ -15,9 +15,22 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <App />
         <Toaster
-          position="top-right"
+          position="top-center"
           toastOptions={{
-            duration: 3000,
+            duration: 3500,
+
+            style: {
+              borderRadius: '18px',
+              padding: '18px',
+              fontSize: '16px',
+            },
+
+            success: {
+              iconTheme: {
+                primary: '#829b91',
+                secondary: '#dadde1',
+              },
+            },
           }}
         />
       </BrowserRouter>
